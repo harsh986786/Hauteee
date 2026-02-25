@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Products - PureAura</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h2>PureAura</h2>
+<nav>
+<a href="index.html">Home</a>
+<a href="products.html">Products</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<section>
+<h1>All Products</h1>
+
+<input type="text" id="searchInput" placeholder="Search soap..." onkeyup="searchProduct()" class="search">
+
+<div class="grid" id="productGrid"></div>
+</section>
+
+<a class="whatsapp-float" href="https://wa.me/919263094661" target="_blank">💬</a>
+
+<script>
+const products=[
+"Lavender Bliss","Charcoal Detox","Rose Petal Glow","Neem Fresh","Aloe Care",
+"Honey Oatmeal","Coffee Scrub","Turmeric Glow","Lemon Zest","Mint Refresh",
+"Shea Soft","Coconut Cream","Sandalwood Calm","Orange Burst","Tea Tree",
+"Milk Glow","Herbal Fresh","Rosemary Mint","Vanilla Smooth","Ocean Breeze"
+];
+
+const grid=document.getElementById("productGrid");
+
+products.forEach(p=>{
+grid.innerHTML+=`
+<div class="card">
+<img src="https://source.unsplash.com/400x300/?handmade-soap,${p}">
+<h3>${p}</h3>
+<a href="https://wa.me/919263094661?text=Hello I want to order ${p}" target="_blank">Order on WhatsApp</a>
+</div>`;
+});
+
+function searchProduct(){
+let input=document.getElementById("searchInput").value.toLowerCase();
+let cards=document.querySelectorAll(".card");
+cards.forEach(card=>{
+let title=card.querySelector("h3").innerText.toLowerCase();
+card.style.display=title.includes(input)?"block":"none";
+});
+}
+</script>
+
+</body>
+</html>
